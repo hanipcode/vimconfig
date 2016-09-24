@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -8,14 +9,17 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tomasr/molokai'
+"Plugin 'tomasr/molokai'
 Plugin 'SirVer/UltiSnips'
+Plugin 'git://github.com/w0ng/vim-hybrid/'
+Plugin 'mattn/emmet-vim'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'shougo/neocomplete.vim'
+Plugin 'briancollins/vim-jst'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'shougo/neocomplete.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -54,7 +58,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_close_preview = 1
 let g:neocomplete#enable_auto_select = 1
 
-"Youcomplete me and ultisinps conflict manage
+
 "https://medium.com/brigade-engineering/sharpen-your-vim-with-snippets-767b693886db#.s8k417oc0
 
 let g:SuperTabDefaultCompletionType    = '<C-n>'
@@ -71,7 +75,12 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 set nu
-let g:airline#extensions#tabline#enabled = 1
-let g:molokai_original = 1
-let g:rehash256 = 1
 
+"Hybird color scheme
+set background=dark
+colorscheme hybrid
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+
+"EMMET
+let g:user_emmet_mode='inv'
