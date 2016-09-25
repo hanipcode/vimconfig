@@ -8,6 +8,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'VundleVim/Vundle.vim'
 "Plugin 'tomasr/molokai'
 Plugin 'SirVer/UltiSnips'
