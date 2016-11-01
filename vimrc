@@ -10,6 +10,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
 "Plugin 'tomasr/molokai'
 Plugin 'SirVer/UltiSnips'
 Plugin 'git://github.com/w0ng/vim-hybrid/'
@@ -70,9 +76,9 @@ let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 
-set tabstop=4
+set tabstop=2
 " when indenting with '>', use 4 spaces width
-set shiftwidth=4
+set shiftwidth=2
 " On pressing tab, insert 4 spaces
 set expandtab
 set nu
@@ -85,3 +91,18 @@ let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palett
 
 "EMMET
 let g:user_emmet_mode='inv'
+
+"JSX
+let g:jsx_ext_required = 0
+
+"CtrlP setting
+set wildignore+=*/node_modules/*,*.so,*.swp,*.zip   
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"Syntastic setting
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0let g:ctrlp_switch_buffer = 'e'
