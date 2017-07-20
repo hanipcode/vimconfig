@@ -9,14 +9,19 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'prettier/vim-prettier'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'crusoexia/vim-javascript-lib'
 Plugin 'mxw/vim-jsx'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 "Plugin 'tomasr/molokai'
+Plugin 'alvan/vim-closetag'
 Plugin 'SirVer/UltiSnips'
 Plugin 'git://github.com/w0ng/vim-hybrid/'
 Plugin 'mattn/emmet-vim'
@@ -25,6 +30,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
 Plugin 'briancollins/vim-jst'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
 "Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'shougo/neocomplete.vim'
 " The following are examples of different formats supported.
@@ -80,11 +86,14 @@ set tabstop=2
 set shiftwidth=2
 " On pressing tab, insert 4 spaces
 set expandtab
+set softtabstop=2
+set autoindent
+set textwidth=120
 set nu
 
 "Hybird color scheme
 set background=dark
-colorscheme hybrid
+colorscheme jellybeans
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
 
@@ -104,4 +113,68 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0let g:ctrlp_switch_buffer = 'e'
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+
+
+
+let g:ctrlp_switch_buffer = 'e'
+
+"Transparent Background
+"hi Normal ctermfg=252 ctermbg=none
+syntax on
+autocmd BufNewFile,BufRead *.styl set filetype=stylus
+
+
+"transparent
+let g:jellybeans_overrides = {
+      \    'background': { 'ctermbg': 'none', '256ctermbg': 'none'  },
+      \}
+
+
+"indent guide
+let g:indent_guides_enable_on_vim_startup = 1
+
+"prettier
+"
+"" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+let g:prettier#autoformat = 0
+let g:prettier#exec_cmd_async = 1
+autocmd BufWritePre *.js,*.json,*.css,*.scss,*.less,*.graphql PrettierAsync
+
+" max line lengh that prettier will wrap on
+let g:prettier#config#print_width = 100
+"
+" " number of spaces per indentation level
+let g:prettier#config#tab_width = 2
+"
+"" use tabs over spaces
+let g:prettier#config#use_tabs = 'false'
+
+" print semicolons
+let g:prettier#config#semi = 'true'
+"
+" " single quotes over double quotes
+let g:prettier#config#single_quote = 'true' 
+"
+"" print spaces between brackets
+let g:prettier#config#bracket_spacing = 'true' 
+
+" put > on the last line instead of new line
+" g:prettier#config#jsx_bracket_same_line = 'true' 
+"
+" " none|es5|all
+let g:prettier#config#trailing_comma = 'es5'
+"
+"" flow|babylon|typescript|postcss|json|graphql
+let g:prettier#config#parser = 'flow'
+" "
+" "
+" "
+"
+" config for autoclose
+"filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.js,*.jsx'
